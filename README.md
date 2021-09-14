@@ -70,7 +70,7 @@ For calcium or voltage imaging with the PCO (or another) camera use the arduino 
 Each camera has its own parameters, there are some parameters that are common to all:
 
 * `recorder` - the type of recorder `tiff` `ffmpeg` `opencv` `binary`
- * `haccel` - `nvidia` or `intel` for use with ffmpeg for compression.
+ * `hwaccel` - `nvidia` or `intel` for use with ffmpeg for compression.
 
 **NOTE:** You need to get ffmpeg compiled with `NVENC` from [here](https://developer.nvidia.com/ffmpeg) - precompiled versions are avaliable - `conda install ffmpeg` works. Make sure to have python recognize it in the path (using for example `which ffmpeg` to confirm from git bash)/
 

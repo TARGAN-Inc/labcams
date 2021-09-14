@@ -5,9 +5,10 @@ tqdm
 pyzmq
 opencv-python
 tifffile
-pyqt5
+pyqt5 == 5.12
 pyqtgraph
 pillow
 scikit-video
 pyserial
 natsort
+pymba >= 0.3

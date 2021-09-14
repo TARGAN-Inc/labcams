@@ -187,6 +187,8 @@ class LabCamsGUI(QMainWindow):
                     cam['AcquisitionFrameCount'] = 1000
                 if not 'nFrameBuffers' in cam.keys():
                     cam['nFrameBuffers'] = 6
+                if not 'exposure' in cam.keys():
+                    cam['exposure'] = None
                 self.cams.append(AVTCam(camId=camids[0][0],
                                         outQ = self.camQueues[-1],
                                         frameRate=cam['frameRate'],
@@ -198,7 +200,8 @@ class LabCamsGUI(QMainWindow):
                                         acquisitionMode = cam['AcquisitionMode'],
                                         nTriggeredFrames = cam['AcquisitionFrameCount'],
                                         nFrameBuffers = cam['nFrameBuffers'],
-                                        recorderpar = recorderpar))
+                                        recorderpar = recorderpar,
+                                        exposure = cam['exposure']))
                 connected_avt_cams.append(camids[0][0])
             elif cam['driver'].lower() == 'qimaging':
                 try:
@@ -702,8 +705,14 @@ def main():
     parser.add_argument('--mj2-rate',
                         default=30.,
                         action='store')
+    parser.add_argument('-f', '--listFeatures',
+                        action='store_false')
     
     opts = parser.parse_args()
+
+    if opts.listFeatures:
+        #TODO implement?
+        pass
 
     if opts.bin_to_mj2:
         from labcams.io import mmap_dat
